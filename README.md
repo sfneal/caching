@@ -1,18 +1,20 @@
-# Very short description of the package
+# Caching
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/sfneal/php-package-boilerplate.svg?style=flat-square)](https://packagist.org/packages/sfneal/php-package-boilerplate)
-[![Build Status](https://img.shields.io/travis/sfneal/php-package-boilerplate/master.svg?style=flat-square)](https://travis-ci.org/sfneal/php-package-boilerplate)
-[![Quality Score](https://img.shields.io/scrutinizer/g/sfneal/php-package-boilerplate.svg?style=flat-square)](https://scrutinizer-ci.com/g/sfneal/php-package-boilerplate)
-[![Total Downloads](https://img.shields.io/packagist/dt/sfneal/php-package-boilerplate.svg?style=flat-square)](https://packagist.org/packages/sfneal/php-package-boilerplate)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/sfneal/caching.svg?style=flat-square)](https://packagist.org/packages/sfneal/caching)
+[![Build Status](https://img.shields.io/travis/sfneal/caching/master.svg?style=flat-square)](https://travis-ci.org/sfneal/caching)
+[![Quality Score](https://img.shields.io/scrutinizer/g/sfneal/caching.svg?style=flat-square)](https://scrutinizer-ci.com/g/sfneal/caching)
+[![Total Downloads](https://img.shields.io/packagist/dt/sfneal/caching.svg?style=flat-square)](https://packagist.org/packages/sfneal/caching)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Traits & interfaces for utilizing cache mechanisms to store frequently retrieved data
+
+
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require sfneal/php-package-boilerplate
+composer require sfneal/caching
 ```
 
 ## Usage

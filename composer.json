@@ -1,11 +1,11 @@
 {
-    "name": "sfneal/php-package-boilerplate",
+    "name": "sfneal/caching",
     "description": "Boilerplate for PHP package repo's",
     "keywords": [
         "sfneal",
-        "php-package-boilerplate"
+        "caching"
     ],
-    "homepage": "https://github.com/sfneal/php-package-boilerplate",
+    "homepage": "https://github.com/sfneal/caching",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Sfneal\\PhpPackageBoilerplate\\": "src"
+            "Sfneal\\Caching\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Sfneal\\PhpPackageBoilerplate\\Tests\\": "tests"
+            "Sfneal\\Caching\\Tests\\": "tests"
         }
     },
     "scripts": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sfneal\PhpPackageBoilerplate\Tests;
+namespace Sfneal\Caching\Tests;
 
 use PHPUnit\Framework\TestCase;
 

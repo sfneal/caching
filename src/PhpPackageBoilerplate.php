@@ -1,8 +1,8 @@
 <?php
 
-namespace Sfneal\PhpPackageBoilerplate;
+namespace Sfneal\Caching;
 
-class PhpPackageBoilerplate
+class Caching
 {
     // Build your next great package.
 }
