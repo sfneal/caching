@@ -5,7 +5,7 @@ namespace Sfneal\Caching\Traits;
 
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Cache;
+use Sfneal\Helpers\Redis\RedisCache;
 
 trait Cacheable
 {
@@ -38,7 +38,7 @@ trait Cacheable
      * @return Collection|mixed
      */
     public function fetch(int $ttl = null) {
-        return Cache::remember($this->cacheKey(), $this->getTTL($ttl), function () {
+        return RedisCache::remember($this->cacheKey(), $this->getTTL($ttl), function () {
             return $this->execute();
         });
     }
@@ -62,7 +62,7 @@ trait Cacheable
     public function invalidateCache() {
         // todo: refactor to protected method
         // Remove # ID's from cache key
-        redisDelete(collect(explode('#', $this->cacheKey(), 1))->first());
+        RedisCache::delete(collect(explode('#', $this->cacheKey(), 1))->first());
         return $this;
     }
 }
