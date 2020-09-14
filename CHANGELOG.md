@@ -12,3 +12,7 @@ All notable changes to `caching` will be documented in this file
 
 ## 0.2.0 - 2020-09-14
 - add support for Laravel 8
+
+
+## 0.2.1 - 2020-09-14
+- fix support for Laravel 8
