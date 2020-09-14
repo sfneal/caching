@@ -8,3 +8,7 @@ All notable changes to `caching` will be documented in this file
 
 ## 0.1.1 - 2020-08-20
 - add use of RedisCache service
+
+
+## 0.2.0 - 2020-09-14
+- add support for Laravel 8
