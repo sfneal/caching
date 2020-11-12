@@ -1,6 +1,6 @@
 {
     "name": "sfneal/caching",
-    "description": "Boilerplate for PHP package repo's",
+    "description": "Traits & interfaces for utilizing cache mechanisms to store frequently retrieved data.",
     "keywords": [
         "sfneal",
         "caching"
