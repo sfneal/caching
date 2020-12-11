@@ -24,3 +24,7 @@ All notable changes to `caching` will be documented in this file
 
 ## 0.4.0 - 2020-11-30
 - add php8 compatibility
+
+
+## 0.4.1 - 2020-12-11
+- fix issues with Travis CI php8 tests
