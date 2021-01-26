@@ -57,7 +57,7 @@ trait Cacheable
      */
     private function getTTL(int $ttl = null)
     {
-        return $ttl ?? $this->ttl ?? env('REDIS_KEY_EXPIRATION');
+        return $ttl ?? $this->ttl ?? config('redis-helpers.ttl');
     }
 
     /**
