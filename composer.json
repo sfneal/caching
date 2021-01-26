@@ -20,7 +20,7 @@
         "sfneal/redis-helpers": ">=1.0.0"
     },
     "require-dev": {
-        "phpunit/phpunit": ">=6.0"
+        "phpunit/phpunit": ">=6.5.14"
     },
     "autoload": {
         "psr-4": {
