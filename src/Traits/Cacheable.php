@@ -7,7 +7,8 @@ use Sfneal\Helpers\Redis\RedisCache;
 
 trait Cacheable
 {
-    // todo: add isCached() amoung other methods
+    // todo: add isCached() among other methods
+    // todo: add method for overwriting cache
 
     /**
      * @var int Time to live
