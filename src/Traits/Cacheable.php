@@ -9,6 +9,7 @@ trait Cacheable
 {
     // todo: add isCached() among other methods
     // todo: add method for overwriting cache
+    // todo: add get ttl method for seeing how long before expiration
 
     /**
      * @var int Time to live
