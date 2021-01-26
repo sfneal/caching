@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Sfneal\Caching\Tests\Mocks;
-
 
 use Illuminate\Database\Eloquent\Collection;
 use Sfneal\Caching\Traits\Cacheable;
