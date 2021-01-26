@@ -3,7 +3,8 @@
 [![Packagist PHP support](https://img.shields.io/packagist/php-v/sfneal/caching)](https://packagist.org/packages/sfneal/caching)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sfneal/caching.svg?style=flat-square)](https://packagist.org/packages/sfneal/caching)
 [![Build Status](https://travis-ci.com/sfneal/caching.svg?branch=master&style=flat-square)](https://travis-ci.com/sfneal/caching)
-[![Quality Score](https://img.shields.io/scrutinizer/g/sfneal/caching.svg?style=flat-square)](https://scrutinizer-ci.com/g/sfneal/caching)
+[![StyleCI](https://github.styleci.io/repos/288491935/shield?branch=master)](https://github.styleci.io/repos/288491935?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sfneal/caching/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/sfneal/caching/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/sfneal/caching.svg?style=flat-square)](https://packagist.org/packages/sfneal/caching)
 
 Traits & interfaces for utilizing cache mechanisms to store frequently retrieved data
@@ -24,13 +25,13 @@ composer require sfneal/caching
 // Usage description here
 ```
 
-### Testing
+## Testing
 
 ``` bash
 composer test
 ```
 
-### Changelog
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
@@ -38,7 +39,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### Security
+## Security
 
 If you discover any security related issues, please email stephen.neal14@gmail.com instead of using the issue tracker.
 
