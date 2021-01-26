@@ -35,6 +35,7 @@ All notable changes to `caching` will be documented in this file
 - add badges to README.md
 - bump sfneal/redis-helpers to initial production version
 
+
 ## 1.0.0 - 2021-01-26
 - initial production release
 - bump sfneal/redis-helpers min version (1.1.0)
