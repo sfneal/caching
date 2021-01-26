@@ -34,3 +34,10 @@ All notable changes to `caching` will be documented in this file
 - cut support php7.0
 - add badges to README.md
 - bump sfneal/redis-helpers to initial production version
+
+## 1.0.0 - 2021-01-26
+- initial production release
+- bump sfneal/redis-helpers min version (1.1.0)
+- add test suite for testing functionality
+- add use of sfneal/redis-helpers config settings
+- update documentation
