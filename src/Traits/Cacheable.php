@@ -32,7 +32,7 @@ trait Cacheable
      *  - use base class's execute() method for retrieving query results
      *
      * @param int|null $ttl
-     * @return Collection|mixed
+     * @return mixed
      */
     public function fetch(int $ttl = null)
     {
@@ -48,15 +48,17 @@ trait Cacheable
      *  - 3. application default cache ttl.
      *
      * @param int|null $ttl
-     * @return int|mixed
+     * @return int
      */
-    private function getTTL(int $ttl = null)
+    private function getTTL(int $ttl = null): int
     {
-        return $ttl ?? $this->ttl ?? config('redis-helpers.ttl');
+        return intval($ttl ?? $this->ttl ?? config('redis-helpers.ttl'));
     }
 
     /**
      * Invalidate the Query Cache for this Query.
+     *
+     * @return self
      */
     public function invalidateCache()
     {
