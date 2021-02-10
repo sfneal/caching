@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Sfneal\Caching\Traits;
-
 
 use Sfneal\Helpers\Redis\RedisCache;
 
