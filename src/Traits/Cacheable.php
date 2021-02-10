@@ -7,6 +7,8 @@ use Sfneal\Helpers\Redis\RedisCache;
 
 trait Cacheable
 {
+    use IsCacheable;
+
     // todo: add isCached() among other methods
     // todo: add method for overwriting cache
     // todo: add get ttl method for seeing how long before expiration
@@ -22,13 +24,6 @@ trait Cacheable
      * @return Collection|int|mixed
      */
     abstract public function execute();
-
-    /**
-     * Retrieve the Query cache key.
-     *
-     * @return string
-     */
-    abstract public function cacheKey(): string;
 
     /**
      * Fetch cached Query results.
