@@ -27,14 +27,6 @@ class CacheableTest extends TestCase
         $key = $todaysDate->cacheKey();
 
         $output = $todaysDate->fetch();
-//        print_r([
-//            '$key' => $key,
-//            '$output' => $output,
-//            'RedisCache::key' => RedisCache::key($key),
-//            'RedisCache::exists' => RedisCache::exists($key),
-//            'RedisCache::missing' => RedisCache::missing($key),
-//            'RedisCache::get' => RedisCache::get($key),
-//        ]);
 
         $this->assertTrue(RedisCache::exists($key));
         $this->assertTrue(RedisCache::get($key) == $output);
