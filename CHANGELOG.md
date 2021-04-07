@@ -51,3 +51,7 @@ All notable changes to `caching` will be documented in this file
 ## 1.2.0 - 2021-02-10
 - make IsCacheable trait with cacheKey() abstract method & isCached() public method
 - optimize return type hinting
+
+
+## 1.3.0 - 2021-04-07
+- bump min sfneal/redis-helpers package version to v1.3 to avoid conflicts with sfneal/actions v2.0
