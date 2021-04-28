@@ -55,3 +55,9 @@ All notable changes to `caching` will be documented in this file
 
 ## 1.3.0 - 2021-04-07
 - bump min sfneal/redis-helpers package version to v1.3 to avoid conflicts with sfneal/actions v2.0
+
+
+## 1.3.1 - 2021-04-28
+- add use of `josiasmontag/laravel-redis-mock` for redis mocking
+- add test methods to `CacheableTest`
+- optimize Travis CI config & enable code coverage uploading

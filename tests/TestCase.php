@@ -3,13 +3,26 @@
 namespace Sfneal\Caching\Tests;
 
 use Illuminate\Foundation\Application;
+use Lunaweb\RedisMock\Providers\RedisMockServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Sfneal\Caching\Tests\Mocks\TodaysDateHash;
 use Sfneal\Helpers\Redis\Providers\RedisHelpersServiceProvider;
-use Sfneal\Helpers\Redis\RedisCache;
 
 class TestCase extends OrchestraTestCase
 {
+    /**
+     * Define environment setup.
+     *
+     * @param Application $app
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('app.debug', true);
+        $app['config']->set('database.redis.client', 'mock');
+        $app['config']->set('cache.default', 'redis');
+        $app['config']->set('cache.prefix', 'redis-helpers');
+    }
+
     /**
      * Register package service providers.
      *
@@ -18,17 +31,9 @@ class TestCase extends OrchestraTestCase
      */
     protected function getPackageProviders($app)
     {
-        return RedisHelpersServiceProvider::class;
-    }
-
-    public function test_caching_is_working()
-    {
-        $todaysDate = new TodaysDateHash();
-        $key = $todaysDate->cacheKey();
-
-        $output = $todaysDate->fetch();
-
-        $this->assertTrue($todaysDate->isCached());
-        $this->assertTrue(RedisCache::get($key) == $output);
+        return [
+            RedisHelpersServiceProvider::class,
+            RedisMockServiceProvider::class,
+        ];
     }
 }

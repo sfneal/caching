@@ -11,6 +11,7 @@ trait Cacheable
 
     // todo: add method for overwriting cache
     // todo: add get ttl method for seeing how long before expiration
+    // todo: remove use of `RedisHelpers`
 
     /**
      * @var int Time to live
