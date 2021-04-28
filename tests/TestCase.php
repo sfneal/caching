@@ -16,6 +16,8 @@ class TestCase extends OrchestraTestCase
      */
     protected function getPackageProviders($app)
     {
-        return RedisHelpersServiceProvider::class;
+        return [
+            RedisHelpersServiceProvider::class,
+        ];
     }
 }

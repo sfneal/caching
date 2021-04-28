@@ -7,14 +7,35 @@ use Sfneal\Helpers\Redis\RedisCache;
 
 class CacheableTest extends TestCase
 {
-    public function test_caching_is_working()
+    /** @test */
+    public function cache_key_is_correct()
     {
         $todaysDate = new TodaysDateHash();
-        $key = $todaysDate->cacheKey();
+
+        $this->assertNotNull($todaysDate->cacheKey());
+        $this->assertIsString($todaysDate->cacheKey());
+    }
+
+    /** @test */
+    public function values_can_be_cached()
+    {
+        $todaysDate = new TodaysDateHash();
 
         $output = $todaysDate->fetch();
 
         $this->assertTrue($todaysDate->isCached());
-        $this->assertTrue(RedisCache::get($key) == $output);
+        $this->assertEquals(RedisCache::get($todaysDate->cacheKey()), $output);
+    }
+
+    /** @test */
+    public function cache_can_be_invalidated()
+    {
+        $todaysDate = new TodaysDateHash();
+        $todaysDate->fetch();
+
+        $this->assertTrue($todaysDate->isCached());
+
+        $todaysDate->invalidateCache();
+        $this->assertFalse($todaysDate->isCached());
     }
 }
