@@ -2,7 +2,6 @@
 
 namespace Sfneal\Caching\Tests\Mocks;
 
-use Illuminate\Database\Eloquent\Collection;
 use Sfneal\Caching\Traits\Cacheable;
 
 class TodaysDateHash
@@ -27,9 +26,9 @@ class TodaysDateHash
     /**
      * Execute the Action.
      *
-     * @return Collection|int|mixed
+     * @return string
      */
-    public function execute()
+    public function execute(): string
     {
         return md5(date($this->format));
     }
