@@ -3,14 +3,14 @@
 namespace Sfneal\Caching\Tests;
 
 use Illuminate\Support\Facades\Cache;
-use Sfneal\Caching\Tests\Mocks\TodaysDateHash;
+use Sfneal\Caching\Tests\Mocks\DateHash;
 
 class CacheableTest extends TestCase
 {
     /** @test */
     public function cache_key_is_correct()
     {
-        $todaysDate = new TodaysDateHash();
+        $todaysDate = new DateHash();
 
         $this->assertNotNull($todaysDate->cacheKey());
         $this->assertIsString($todaysDate->cacheKey());
@@ -19,7 +19,7 @@ class CacheableTest extends TestCase
     /** @test */
     public function values_can_be_cached()
     {
-        $todaysDate = new TodaysDateHash();
+        $todaysDate = new DateHash();
 
         $output = $todaysDate->fetch();
 
@@ -30,7 +30,7 @@ class CacheableTest extends TestCase
     /** @test */
     public function cache_can_be_invalidated()
     {
-        $todaysDate = new TodaysDateHash();
+        $todaysDate = new DateHash();
         $todaysDate->fetch();
 
         $this->assertTrue($todaysDate->isCached());

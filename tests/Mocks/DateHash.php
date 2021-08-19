@@ -4,9 +4,14 @@ namespace Sfneal\Caching\Tests\Mocks;
 
 use Sfneal\Caching\Traits\Cacheable;
 
-class TodaysDateHash
+class DateHash
 {
     use Cacheable;
+
+    /**
+     * @var string
+     */
+    private $date;
 
     /**
      * @var string
@@ -16,11 +21,13 @@ class TodaysDateHash
     /**
      * TodaysDateHash constructor.
      *
+     * @param string|null $datetime
      * @param string $format
      */
-    public function __construct(string $format = 'Y-m-d')
+    public function __construct(string $datetime = null, string $format = 'Y-m-d')
     {
         $this->format = $format;
+        $this->date = date($this->format, strtotime($datetime ?? now()));
     }
 
     /**
@@ -30,7 +37,7 @@ class TodaysDateHash
      */
     public function execute(): string
     {
-        return md5(date($this->format));
+        return md5($this->date);
     }
 
     /**
@@ -40,6 +47,6 @@ class TodaysDateHash
      */
     public function cacheKey(): string
     {
-        return "todays-date:{$this->format}";
+        return "date-hash:{$this->date}#{$this->format}";
     }
 }
