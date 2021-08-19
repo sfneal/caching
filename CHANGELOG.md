@@ -61,3 +61,8 @@ All notable changes to `caching` will be documented in this file
 - add use of `josiasmontag/laravel-redis-mock` for redis mocking
 - add test methods to `CacheableTest`
 - optimize Travis CI config & enable code coverage uploading
+
+ 
+## 1.3.2 - 2021-08-19
+- add use of dataProvider in `CacheableTest`
+- refactor `TodaysDateHash` mock test class to `DateHash`
