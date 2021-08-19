@@ -2,8 +2,8 @@
 
 namespace Sfneal\Caching\Tests;
 
+use Illuminate\Support\Facades\Cache;
 use Sfneal\Caching\Tests\Mocks\TodaysDateHash;
-use Sfneal\Helpers\Redis\RedisCache;
 
 class CacheableTest extends TestCase
 {
@@ -24,7 +24,7 @@ class CacheableTest extends TestCase
         $output = $todaysDate->fetch();
 
         $this->assertTrue($todaysDate->isCached());
-        $this->assertEquals(RedisCache::get($todaysDate->cacheKey()), $output);
+        $this->assertEquals(Cache::get($todaysDate->cacheKey()), $output);
     }
 
     /** @test */
