@@ -47,6 +47,6 @@ class DateHash
      */
     public function cacheKey(): string
     {
-        return "date-hash:{$this->date}#{$this->format}";
+        return "date-hash:{$this->date}:{$this->format}";
     }
 }
