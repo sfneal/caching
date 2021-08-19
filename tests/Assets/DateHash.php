@@ -1,6 +1,6 @@
 <?php
 
-namespace Sfneal\Caching\Tests\Mocks;
+namespace Sfneal\Caching\Tests\Assets;
 
 use Sfneal\Caching\Traits\Cacheable;
 

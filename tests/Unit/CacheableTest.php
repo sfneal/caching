@@ -1,10 +1,11 @@
 <?php
 
-namespace Sfneal\Caching\Tests;
+namespace Sfneal\Caching\Tests\Unit;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-use Sfneal\Caching\Tests\Mocks\DateHash;
+use Sfneal\Caching\Tests\Assets\DateHash;
+use Sfneal\Caching\Tests\TestCase;
 
 class CacheableTest extends TestCase
 {
