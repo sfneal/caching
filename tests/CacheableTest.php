@@ -2,40 +2,76 @@
 
 namespace Sfneal\Caching\Tests;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Sfneal\Caching\Tests\Mocks\DateHash;
 
 class CacheableTest extends TestCase
 {
-    /** @test */
-    public function cache_key_is_correct()
+    /**
+     * Retrieve an array of arguments to pass to `DateHash` constructor.
+     *
+     * @return array[]
+     */
+    public function dateHashParamsProvider(): array
     {
-        $todaysDate = new DateHash();
-
-        $this->assertNotNull($todaysDate->cacheKey());
-        $this->assertIsString($todaysDate->cacheKey());
+        return [
+            [now()->subDay(), 'Y-m-d'],
+            [now()->subDay(), 'm/d/Y'],
+            [now()->subDay(), 'm/d/y'],
+            [now(), 'Y-m-d'],
+            [now(), 'm/d/Y'],
+            [now(), 'm/d/y'],
+            [now()->addDay(), 'Y-m-d'],
+            [now()->addDay(), 'm/d/Y'],
+            [now()->addDay(), 'm/d/y'],
+        ];
     }
 
-    /** @test */
-    public function values_can_be_cached()
+    /**
+     * @test
+     * @dataProvider dateHashParamsProvider
+     * @param Carbon $datetime
+     * @param string $format
+     */
+    public function cache_key_is_correct(Carbon $datetime, string $format)
     {
-        $todaysDate = new DateHash();
+        $dateHash = new DateHash($datetime, $format);
 
-        $output = $todaysDate->fetch();
-
-        $this->assertTrue($todaysDate->isCached());
-        $this->assertEquals(Cache::get($todaysDate->cacheKey()), $output);
+        $this->assertNotNull($dateHash->cacheKey());
+        $this->assertIsString($dateHash->cacheKey());
     }
 
-    /** @test */
-    public function cache_can_be_invalidated()
+    /**
+     * @test
+     * @dataProvider dateHashParamsProvider
+     * @param Carbon $datetime
+     * @param string $format
+     */
+    public function values_can_be_cached(Carbon $datetime, string $format)
     {
-        $todaysDate = new DateHash();
-        $todaysDate->fetch();
+        $dateHash = new DateHash($datetime, $format);
 
-        $this->assertTrue($todaysDate->isCached());
+        $output = $dateHash->fetch();
 
-        $todaysDate->invalidateCache();
-        $this->assertFalse($todaysDate->isCached());
+        $this->assertTrue($dateHash->isCached());
+        $this->assertEquals(Cache::get($dateHash->cacheKey()), $output);
+    }
+
+    /**
+     * @test
+     * @dataProvider dateHashParamsProvider
+     * @param Carbon $datetime
+     * @param string $format
+     */
+    public function cache_can_be_invalidated(Carbon $datetime, string $format)
+    {
+        $dateHash = new DateHash($datetime, $format);
+        $dateHash->fetch();
+
+        $this->assertTrue($dateHash->isCached());
+
+        $dateHash->invalidateCache();
+        $this->assertFalse($dateHash->isCached());
     }
 }
