@@ -66,3 +66,4 @@ All notable changes to `caching` will be documented in this file
 ## 1.3.2 - 2021-08-19
 - add use of dataProvider in `CacheableTest`
 - refactor `TodaysDateHash` mock test class to `DateHash`
+- refactor test classes into `Assets`, `Unit` & `Feature` namespaces
