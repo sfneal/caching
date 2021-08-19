@@ -9,26 +9,6 @@ use Sfneal\Caching\Tests\Mocks\DateHash;
 class CacheableTest extends TestCase
 {
     /**
-     * Retrieve an array of arguments to pass to `DateHash` constructor.
-     *
-     * @return array[]
-     */
-    public function dateHashParamsProvider(): array
-    {
-        return [
-            [now()->subDay(), 'Y-m-d'],
-            [now()->subDay(), 'm/d/Y'],
-            [now()->subDay(), 'm/d/y'],
-            [now(), 'Y-m-d'],
-            [now(), 'm/d/Y'],
-            [now(), 'm/d/y'],
-            [now()->addDay(), 'Y-m-d'],
-            [now()->addDay(), 'm/d/Y'],
-            [now()->addDay(), 'm/d/y'],
-        ];
-    }
-
-    /**
      * @test
      * @dataProvider dateHashParamsProvider
      * @param Carbon $datetime
