@@ -18,9 +18,14 @@ class TestCase extends OrchestraTestCase
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('app.debug', true);
-        $app['config']->set('database.redis.client', 'mock');
         $app['config']->set('cache.default', 'redis');
         $app['config']->set('cache.prefix', 'redis-helpers');
+
+        $app['config']->set('database.redis.client', env('REDIS_CLIENT', 'mock'));
+        $app['config']->set('database.redis.default.host', env('REDIS_HOST', '127.0.0.1'));
+        $app['config']->set('database.redis.default.port', env('REDIS_PORT', 6379));
+        $app['config']->set('database.redis.default.options.prefix', null);
+        $app['config']->set('cache.stores.redis.connection', 'default');
     }
 
     /**
