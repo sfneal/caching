@@ -13,9 +13,7 @@ class RedisConnectionTest extends TestCase
     {
         if (config('database.redis.client') == 'mock') {
             $this->assertInstanceOf(MockPredisConnection::class, Redis::connection());
-        }
-
-        elseif (config('database.redis.client') == 'predis') {
+        } elseif (config('database.redis.client') == 'predis') {
             $this->assertInstanceOf(PredisConnection::class, Redis::connection());
         }
     }
