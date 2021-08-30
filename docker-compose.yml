@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+    caching:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: "stephenneal/caching:${TAG}"
+        env_file: .env.docker
+        container_name: caching
+        tty: true
+        volumes:
+            - caching:/var/www
+        depends_on:
+            - caching-cache
+        networks:
+            - caching-network
+
+    caching-cache:
+        container_name: caching-cache
+        image: redis:6-alpine
+        command: ["redis-server", "--appendonly yes", "--port 9576"]
+        ports:
+            - "9576:9576"
+        volumes:
+            - caching-cache:/data
+        networks:
+            - caching-network
+
+
+# Networks
+networks:
+    caching-network:
+        driver: bridge
+
+# Volumes
+volumes:
+    caching:
+    caching-cache:
