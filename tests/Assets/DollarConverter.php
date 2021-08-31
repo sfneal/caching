@@ -38,6 +38,6 @@ class DollarConverter extends Converter
      */
     public function cacheKey(): string
     {
-        return parent::cacheKey() . ":dollars:{$this->amount}";
+        return parent::cacheKey().":dollars:{$this->amount}";
     }
 }

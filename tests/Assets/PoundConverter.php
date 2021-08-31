@@ -38,6 +38,6 @@ class PoundConverter extends Converter
      */
     public function cacheKey(): string
     {
-        return parent::cacheKey() . ":pounds:{$this->amount}";
+        return parent::cacheKey().":pounds:{$this->amount}";
     }
 }
