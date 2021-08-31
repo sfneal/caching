@@ -36,6 +36,19 @@ class CacheableTest extends TestCase
      * @dataProvider cacheablesProvider
      * @param $cacheable
      */
+    public function values_can_be_retrieved_without_caching($cacheable)
+    {
+        $output = $cacheable->execute();
+
+        $this->assertFalse($cacheable->isCached());
+        $this->assertEquals($cacheable->fetch(), $output);
+    }
+
+    /**
+     * @test
+     * @dataProvider cacheablesProvider
+     * @param $cacheable
+     */
     public function cache_can_be_invalidated($cacheable)
     {
         $cacheable->fetch();
