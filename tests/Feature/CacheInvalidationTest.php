@@ -42,6 +42,7 @@ class CacheInvalidationTest extends TestCase
         ];
 
         foreach ($euroConversions as $conversion) {
+            $conversion->fetch();
             $this->assertTrue($conversion->isCached());
         }
 
