@@ -67,3 +67,9 @@ All notable changes to `caching` will be documented in this file
 - add use of dataProvider in `CacheableTest`
 - refactor `TodaysDateHash` mock test class to `DateHash`
 - refactor test classes into `Assets`, `Unit` & `Feature` namespaces
+
+
+## 2.0.0 - 2021-08-19
+- bump sfneal/redis-helpers min version to v1.4
+- fix issues surrounding `invalidateCache()` methods not deleting child keys
+- fix default cache key 'id suffix' delimiter to be ':' instead of '#' due to issues with mock & other redis clients

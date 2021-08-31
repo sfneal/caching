@@ -11,7 +11,6 @@ trait Cacheable
 
     // todo: add method for overwriting cache
     // todo: add get ttl method for seeing how long before expiration
-    // todo: remove use of `RedisHelpers`
     // todo: create new trait that replaces execute with `get()`?
 
     /**
@@ -20,7 +19,7 @@ trait Cacheable
     public $ttl = null;
 
     /**
-     * Execute the Query.
+     * Retrieve the cached data.
      *
      * @return Collection|int|mixed
      */
@@ -61,12 +60,33 @@ trait Cacheable
      *
      * @return self
      */
-    public function invalidateCache()
+    public function invalidateCache(): self
     {
-        // todo: refactor to protected method
-        // Remove # ID's from cache key
-        RedisCache::delete(collect(explode('#', $this->cacheKey(), 1))->first());
+        // todo: refactor to protected method?
+        RedisCache::delete($this->cacheKeyPrefix());
 
         return $this;
+    }
+
+    /**
+     * Retrieve the cache key prefix by removing the trailing 'id' portion of the key.
+     *
+     * @return string
+     */
+    public function cacheKeyPrefix(): string
+    {
+        // Explode the cache key into an array split by a colon
+        $pieces = explode(':', $this->cacheKey());
+
+        // Only remove ID suffix if the cache key contains multiple segments
+        if (count($pieces) == 1) {
+            return $this->cacheKey();
+        }
+
+        // Isolate the 'ID' portion of the cache (last segment)
+        $id = array_reverse($pieces)[0];
+
+        // Remove the ID from the cache key to retrieve the prefix
+        return str_replace($id, '', $this->cacheKey());
     }
 }
