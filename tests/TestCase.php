@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Lunaweb\RedisMock\Providers\RedisMockServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use Sfneal\Caching\Tests\Assets\DateHash;
 use Sfneal\Helpers\Redis\Providers\RedisHelpersServiceProvider;
 
 class TestCase extends OrchestraTestCase
@@ -52,18 +53,18 @@ class TestCase extends OrchestraTestCase
      *
      * @return array[]
      */
-    public function dateHashParamsProvider(): array
+    public function cacheablesProvider(): array
     {
         return [
-            [now()->subDay(), 'Y-m-d'],
-            [now()->subDay(), 'm/d/Y'],
-            [now()->subDay(), 'm/d/y'],
-            [now(), 'Y-m-d'],
-            [now(), 'm/d/Y'],
-            [now(), 'm/d/y'],
-            [now()->addDay(), 'Y-m-d'],
-            [now()->addDay(), 'm/d/Y'],
-            [now()->addDay(), 'm/d/y'],
+            [new DateHash(now()->subDay(), 'Y-m-d')],
+            [new DateHash(now()->subDay(), 'm/d/Y')],
+            [new DateHash(now()->subDay(), 'm/d/y')],
+            [new DateHash(now(), 'Y-m-d')],
+            [new DateHash(now(), 'm/d/Y')],
+            [new DateHash(now(), 'm/d/y')],
+            [new DateHash(now()->addDay(), 'Y-m-d')],
+            [new DateHash(now()->addDay(), 'm/d/Y')],
+            [new DateHash(now()->addDay(), 'm/d/y')],
         ];
     }
 }
