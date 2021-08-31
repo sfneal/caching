@@ -20,7 +20,7 @@ trait Cacheable
     public $ttl = null;
 
     /**
-     * Execute the Query.
+     * Retrieve the cached data.
      *
      * @return Collection|int|mixed
      */
