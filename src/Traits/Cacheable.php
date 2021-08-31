@@ -61,7 +61,7 @@ trait Cacheable
      *
      * @return self
      */
-    public function invalidateCache()
+    public function invalidateCache(): self
     {
         // todo: refactor to protected method
         // Remove # ID's from cache key
