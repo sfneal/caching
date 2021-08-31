@@ -64,7 +64,7 @@ trait Cacheable
     public function invalidateCache(): self
     {
         // todo: refactor to protected method?
-        RedisCache::delete($this->getCacheKeyPrefix());
+        RedisCache::delete($this->cacheKeyPrefix());
 
         return $this;
     }
@@ -74,7 +74,7 @@ trait Cacheable
      *
      * @return string
      */
-    private function getCacheKeyPrefix(): string
+    public function cacheKeyPrefix(): string
     {
         // Explode the cache key into an array split by a colon
         $pieces = explode(':', $this->cacheKey());

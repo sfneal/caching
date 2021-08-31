@@ -10,21 +10,20 @@ class CacheInvalidationTest extends TestCase
     /** @test */
     public function euro_converter_can_be_invalidated()
     {
-        $euroConversions = [
+        $conversions = [
             new EuroConverter(rand(0, 1000)),
             new EuroConverter(rand(0, 1000)),
             new EuroConverter(rand(0, 1000)),
         ];
 
-        foreach ($euroConversions as $conversion) {
+        foreach ($conversions as $conversion) {
             $conversion->fetch();
             $this->assertTrue($conversion->isCached());
         }
 
-        // todo: should only need to invalidate one
-        $euroConversions[0]->invalidateCache();
+        $conversions[0]->invalidateCache();
 
-        foreach ($euroConversions as $conversion) {
+        foreach ($conversions as $conversion) {
             $this->assertFalse($conversion->isCached());
         }
     }
