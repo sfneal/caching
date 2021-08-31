@@ -11,7 +11,6 @@ trait Cacheable
 
     // todo: add method for overwriting cache
     // todo: add get ttl method for seeing how long before expiration
-    // todo: remove use of `RedisHelpers`
     // todo: create new trait that replaces execute with `get()`?
 
     /**
