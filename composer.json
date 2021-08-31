@@ -21,9 +21,10 @@
     },
     "require-dev": {
         "josiasmontag/laravel-redis-mock": ">=1.2.6",
-        "phpunit/phpunit": ">=6.5.14",
         "orchestra/testbench": ">=3.8.0",
-        "scrutinizer/ocular": "^1.8"
+        "phpunit/phpunit": ">=6.5.14",
+        "scrutinizer/ocular": "^1.8",
+        "sfneal/currency": "^2.0"
     },
     "autoload": {
         "psr-4": {
