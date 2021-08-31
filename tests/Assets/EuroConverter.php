@@ -2,13 +2,10 @@
 
 namespace Sfneal\Caching\Tests\Assets;
 
-use Sfneal\Caching\Traits\Cacheable;
 use Sfneal\Currency\Currency;
 
-class EuroConverter
+class EuroConverter extends Converter
 {
-    use Cacheable;
-
     /**
      * @var int
      */
@@ -41,6 +38,6 @@ class EuroConverter
      */
     public function cacheKey(): string
     {
-        return "currency-conversions:euros:{$this->amount}";
+        return parent::cacheKey() . ":euros:{$this->amount}";
     }
 }
