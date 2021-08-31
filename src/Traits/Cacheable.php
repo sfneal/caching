@@ -79,6 +79,11 @@ trait Cacheable
         // Explode the cache key into an array split by a colon
         $pieces = explode(':', $this->cacheKey());
 
+        // Only remove ID suffix if the cache key contains multiple segments
+        if (count($pieces) == 1) {
+            return $this->cacheKey();
+        }
+
         // Isolate the 'ID' portion of the cache (last segment)
         $id = array_reverse($pieces)[0];
 
