@@ -38,6 +38,6 @@ class EuroConverter extends Converter
      */
     public function cacheKey(): string
     {
-        return parent::cacheKey() . ":euros:{$this->amount}";
+        return parent::cacheKey().":euros:{$this->amount}";
     }
 }
