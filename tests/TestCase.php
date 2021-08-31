@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Lunaweb\RedisMock\Providers\RedisMockServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Sfneal\Caching\Tests\Assets\DateHash;
+use Sfneal\Caching\Tests\Assets\EuroConverter;
 use Sfneal\Helpers\Redis\Providers\RedisHelpersServiceProvider;
 
 class TestCase extends OrchestraTestCase
@@ -65,6 +66,9 @@ class TestCase extends OrchestraTestCase
             [new DateHash(now()->addDay(), 'Y-m-d')],
             [new DateHash(now()->addDay(), 'm/d/Y')],
             [new DateHash(now()->addDay(), 'm/d/y')],
+            [new EuroConverter(rand(0, 1000))],
+            [new EuroConverter(rand(0, 1000))],
+            [new EuroConverter(rand(0, 1000))],
         ];
     }
 }
