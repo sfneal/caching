@@ -2,57 +2,60 @@
 
 namespace Sfneal\Caching\Tests\Unit;
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-use Sfneal\Caching\Tests\Assets\DateHash;
 use Sfneal\Caching\Tests\TestCase;
 
 class CacheableTest extends TestCase
 {
     /**
      * @test
-     * @dataProvider dateHashParamsProvider
-     * @param Carbon $datetime
-     * @param string $format
+     * @dataProvider cacheablesProvider
+     * @param $cacheable
      */
-    public function cache_key_is_correct(Carbon $datetime, string $format)
+    public function cache_key_is_correct($cacheable)
     {
-        $dateHash = new DateHash($datetime, $format);
-
-        $this->assertNotNull($dateHash->cacheKey());
-        $this->assertIsString($dateHash->cacheKey());
+        $this->assertNotNull($cacheable->cacheKey());
+        $this->assertIsString($cacheable->cacheKey());
     }
 
     /**
      * @test
-     * @dataProvider dateHashParamsProvider
-     * @param Carbon $datetime
-     * @param string $format
+     * @dataProvider cacheablesProvider
+     * @param $cacheable
      */
-    public function values_can_be_cached(Carbon $datetime, string $format)
+    public function values_can_be_cached($cacheable)
     {
-        $dateHash = new DateHash($datetime, $format);
+        $output = $cacheable->fetch();
 
-        $output = $dateHash->fetch();
-
-        $this->assertTrue($dateHash->isCached());
-        $this->assertEquals(Cache::get($dateHash->cacheKey()), $output);
+        $this->assertTrue($cacheable->isCached());
+        $this->assertEquals(Cache::get($cacheable->cacheKey()), $output);
     }
 
     /**
      * @test
-     * @dataProvider dateHashParamsProvider
-     * @param Carbon $datetime
-     * @param string $format
+     * @dataProvider cacheablesProvider
+     * @param $cacheable
      */
-    public function cache_can_be_invalidated(Carbon $datetime, string $format)
+    public function values_can_be_retrieved_without_caching($cacheable)
     {
-        $dateHash = new DateHash($datetime, $format);
-        $dateHash->fetch();
+        $output = $cacheable->execute();
 
-        $this->assertTrue($dateHash->isCached());
+        $this->assertFalse($cacheable->isCached());
+        $this->assertEquals($cacheable->fetch(), $output);
+    }
 
-        $dateHash->invalidateCache();
-        $this->assertFalse($dateHash->isCached());
+    /**
+     * @test
+     * @dataProvider cacheablesProvider
+     * @param $cacheable
+     */
+    public function cache_can_be_invalidated($cacheable)
+    {
+        $cacheable->fetch();
+
+        $this->assertTrue($cacheable->isCached());
+
+        $cacheable->invalidateCache();
+        $this->assertFalse($cacheable->isCached());
     }
 }

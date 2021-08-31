@@ -2,32 +2,101 @@
 
 namespace Sfneal\Caching\Tests\Feature;
 
-use Sfneal\Caching\Tests\Assets\DateHash;
+use Sfneal\Caching\Tests\Assets\Converter;
+use Sfneal\Caching\Tests\Assets\DollarConverter;
+use Sfneal\Caching\Tests\Assets\EuroConverter;
+use Sfneal\Caching\Tests\Assets\PoundConverter;
 use Sfneal\Caching\Tests\TestCase;
 
 class CacheInvalidationTest extends TestCase
 {
     /** @test */
-    public function date_hash_group_can_be_invalidated()
+    public function euro_converter_can_be_invalidated()
     {
-        $dateHashes = [
-            new DateHash(now(), 'Y-m-d'),
-            new DateHash(now(), 'm/d/Y'),
-            new DateHash(now(), 'm/d/y'),
+        $conversions = [
+            new EuroConverter(rand(0, 1000)),
+            new EuroConverter(rand(0, 1000)),
+            new EuroConverter(rand(0, 1000)),
         ];
 
-        foreach ($dateHashes as $dateHash) {
-            $dateHash->fetch();
-            $this->assertTrue($dateHash->isCached());
+        foreach ($conversions as $conversion) {
+            $conversion->fetch();
+            $this->assertTrue($conversion->isCached());
         }
 
-        // todo: should only need to invalidate one
-        $dateHashes[0]->invalidateCache();
-        $dateHashes[1]->invalidateCache();
-        $dateHashes[2]->invalidateCache();
+        $conversions[0]->invalidateCache();
 
-        foreach ($dateHashes as $dateHash) {
-            $this->assertFalse($dateHash->isCached());
+        foreach ($conversions as $conversion) {
+            $this->assertFalse($conversion->isCached());
+        }
+    }
+
+    /** @test */
+    public function pound_converter_can_be_invalidated()
+    {
+        $conversions = [
+            new PoundConverter(rand(0, 1000)),
+            new PoundConverter(rand(0, 1000)),
+            new PoundConverter(rand(0, 1000)),
+        ];
+
+        foreach ($conversions as $conversion) {
+            $conversion->fetch();
+            $this->assertTrue($conversion->isCached());
+        }
+
+        $conversions[0]->invalidateCache();
+
+        foreach ($conversions as $conversion) {
+            $this->assertFalse($conversion->isCached());
+        }
+    }
+
+    /** @test */
+    public function dollar_converter_can_be_invalidated()
+    {
+        $conversions = [
+            new DollarConverter(rand(0, 1000)),
+            new DollarConverter(rand(0, 1000)),
+            new DollarConverter(rand(0, 1000)),
+        ];
+
+        foreach ($conversions as $conversion) {
+            $conversion->fetch();
+            $this->assertTrue($conversion->isCached());
+        }
+
+        $conversions[0]->invalidateCache();
+
+        foreach ($conversions as $conversion) {
+            $this->assertFalse($conversion->isCached());
+        }
+    }
+
+    /** @test */
+    public function all_conversions_can_be_invalidated()
+    {
+        $conversions = [
+            new EuroConverter(rand(0, 1000)),
+            new EuroConverter(rand(0, 1000)),
+            new EuroConverter(rand(0, 1000)),
+            new PoundConverter(rand(0, 1000)),
+            new PoundConverter(rand(0, 1000)),
+            new PoundConverter(rand(0, 1000)),
+            new DollarConverter(rand(0, 1000)),
+            new DollarConverter(rand(0, 1000)),
+            new DollarConverter(rand(0, 1000)),
+        ];
+
+        foreach ($conversions as $conversion) {
+            $conversion->fetch();
+            $this->assertTrue($conversion->isCached());
+        }
+
+        (new Converter)->invalidateCache();
+
+        foreach ($conversions as $conversion) {
+            $this->assertFalse($conversion->isCached());
         }
     }
 }
