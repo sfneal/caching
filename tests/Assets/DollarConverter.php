@@ -4,7 +4,7 @@ namespace Sfneal\Caching\Tests\Assets;
 
 use Sfneal\Currency\Currency;
 
-class DollarsConverter extends Converter
+class DollarConverter extends Converter
 {
     /**
      * @var int

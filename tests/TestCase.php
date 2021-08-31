@@ -7,7 +7,7 @@ use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Lunaweb\RedisMock\Providers\RedisMockServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Sfneal\Caching\Tests\Assets\DateHash;
-use Sfneal\Caching\Tests\Assets\DollarsConverter;
+use Sfneal\Caching\Tests\Assets\DollarConverter;
 use Sfneal\Caching\Tests\Assets\EuroConverter;
 use Sfneal\Caching\Tests\Assets\PoundConverter;
 use Sfneal\Helpers\Redis\Providers\RedisHelpersServiceProvider;
@@ -87,9 +87,9 @@ class TestCase extends OrchestraTestCase
             [new PoundConverter(rand(0, 1000))],
             [new PoundConverter(rand(0, 1000))],
             [new PoundConverter(rand(0, 1000))],
-            [new DollarsConverter(rand(0, 1000))],
-            [new DollarsConverter(rand(0, 1000))],
-            [new DollarsConverter(rand(0, 1000))],
+            [new DollarConverter(rand(0, 1000))],
+            [new DollarConverter(rand(0, 1000))],
+            [new DollarConverter(rand(0, 1000))],
         ];
     }
 }
