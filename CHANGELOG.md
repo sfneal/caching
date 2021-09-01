@@ -77,3 +77,4 @@ All notable changes to `caching` will be documented in this file
 
 ## 2.0.1 - 2021-08-31
 - add support for sfneal/redis-helper v2.0
+- cut use of removed `RedisCache` methods
