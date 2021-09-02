@@ -3,6 +3,7 @@
 namespace Sfneal\Caching\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 use Sfneal\Helpers\Redis\RedisCache;
 
 trait Cacheable
@@ -36,7 +37,7 @@ trait Cacheable
      */
     public function fetch(int $ttl = null)
     {
-        return RedisCache::remember($this->cacheKey(), $this->getTTL($ttl), function () {
+        return Cache::remember($this->cacheKey(), $this->getTTL($ttl), function () {
             return $this->execute();
         });
     }

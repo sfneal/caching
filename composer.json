@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": ">=7.1",
-        "sfneal/redis-helpers": "^1.4"
+        "sfneal/redis-helpers": "^1.4|v2.0"
     },
     "require-dev": {
         "josiasmontag/laravel-redis-mock": ">=1.2.6",
