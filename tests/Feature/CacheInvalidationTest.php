@@ -24,11 +24,9 @@ class CacheInvalidationTest extends TestCase
             $this->assertTrue($conversion->isCached());
         }
 
-        $conversions[0]->invalidateCache();
+        $invalidations = $conversions[0]->invalidateCache();
 
-        foreach ($conversions as $conversion) {
-            $this->assertFalse($conversion->isCached());
-        }
+        $this->assertCacheInvalidated($conversions, $invalidations);
     }
 
     /** @test */
@@ -45,11 +43,9 @@ class CacheInvalidationTest extends TestCase
             $this->assertTrue($conversion->isCached());
         }
 
-        $conversions[0]->invalidateCache();
+        $invalidations = $conversions[0]->invalidateCache();
 
-        foreach ($conversions as $conversion) {
-            $this->assertFalse($conversion->isCached());
-        }
+        $this->assertCacheInvalidated($conversions, $invalidations);
     }
 
     /** @test */
@@ -66,11 +62,9 @@ class CacheInvalidationTest extends TestCase
             $this->assertTrue($conversion->isCached());
         }
 
-        $conversions[0]->invalidateCache();
+        $invalidations = $conversions[0]->invalidateCache();
 
-        foreach ($conversions as $conversion) {
-            $this->assertFalse($conversion->isCached());
-        }
+        $this->assertCacheInvalidated($conversions, $invalidations);
     }
 
     /** @test */
@@ -93,7 +87,28 @@ class CacheInvalidationTest extends TestCase
             $this->assertTrue($conversion->isCached());
         }
 
-        (new Converter)->invalidateCache();
+        $invalidations = (new Converter)->invalidateCache();
+
+        $this->assertCacheInvalidated($conversions, $invalidations);
+    }
+
+    /**
+     * Execute assertions to confirm the cache has been invalidated.
+     *
+     * @param array $conversions
+     * @param $invalidations
+     */
+    public function assertCacheInvalidated(array $conversions, $invalidations): void
+    {
+        $this->assertIsArray($invalidations);
+        $this->assertCount(count($conversions), $invalidations);
+        $this->assertEquals(
+            array_keys($invalidations),
+            collect($conversions)->map(function (Converter $converter) {
+                return $converter->cacheKey();
+            })->toArray()
+        );
+        $this->assertEquals(array_fill(0, count($conversions), 1), array_values($invalidations));
 
         foreach ($conversions as $conversion) {
             $this->assertFalse($conversion->isCached());
