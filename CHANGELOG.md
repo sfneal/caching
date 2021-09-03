@@ -78,3 +78,8 @@ All notable changes to `caching` will be documented in this file
 ## 2.0.1 - 2021-08-31
 - add support for sfneal/redis-helper v2.0
 - cut use of removed `RedisCache` methods
+
+
+## 2.1.0 - 2021-09-03
+- fix `Cacheable::invalidateCache()` method to return an array of deleted keys for easier debugging
+- add improved assertions to `CacheInvalidationTest`
