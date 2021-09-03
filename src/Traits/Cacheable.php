@@ -64,7 +64,7 @@ trait Cacheable
     public function invalidateCache(): array
     {
         return array_merge(
-            RedisCache::delete($this->cacheKey(), false),
+            [$this->cacheKey() => Cache::forget($this->cacheKey())],
             RedisCache::delete($this->cacheKeyPrefix())
         );
     }

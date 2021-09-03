@@ -87,3 +87,7 @@ All notable changes to `caching` will be documented in this file
 
 ## 2.1.1 - 2021-09-03
 - add explicit deleting of the primary cache key in `Cacheable::invalidateCache()` method
+
+
+## 2.1.2 - 2021-09-03
+- add deleting of full cache key using `Cache` facade in `Cacheable::invalidateCache()`

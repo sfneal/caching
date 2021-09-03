@@ -88,6 +88,7 @@ class CacheInvalidationTest extends TestCase
         }
 
         $invalidations = (new Converter)->invalidateCache();
+        unset($invalidations['currency-conversions']);
 
         $this->assertCacheInvalidated($conversions, $invalidations);
     }
