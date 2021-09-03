@@ -102,11 +102,21 @@ class CacheInvalidationTest extends TestCase
     {
         $this->assertIsArray($invalidations);
         $this->assertCount(count($conversions), $invalidations);
+
         $this->assertEquals(
-            array_keys($invalidations),
-            collect($conversions)->map(function (Converter $converter) {
-                return $converter->cacheKey();
-            })->toArray()
+            array_values(
+                collect(array_keys($invalidations))
+                    ->sort()
+                    ->toArray()
+            ),
+            array_values(
+                collect($conversions)
+                    ->map(function (Converter $converter) {
+                        return $converter->cacheKey();
+                    })
+                    ->sort()
+                    ->toArray()
+            )
         );
         $this->assertEquals(array_fill(0, count($conversions), 1), array_values($invalidations));
 
