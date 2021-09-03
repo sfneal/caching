@@ -83,3 +83,7 @@ All notable changes to `caching` will be documented in this file
 ## 2.1.0 - 2021-09-03
 - fix `Cacheable::invalidateCache()` method to return an array of deleted keys for easier debugging
 - add improved assertions to `CacheInvalidationTest`
+
+
+## 2.1.1 - 2021-09-03
+- add explicit deleting of the primary cache key in `Cacheable::invalidateCache()` method
