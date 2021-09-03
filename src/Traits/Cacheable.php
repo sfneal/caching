@@ -59,14 +59,11 @@ trait Cacheable
     /**
      * Invalidate the Query Cache for this Query.
      *
-     * @return self
+     * @return array
      */
-    public function invalidateCache(): self
+    public function invalidateCache(): array
     {
-        // todo: refactor to protected method?
-        RedisCache::delete($this->cacheKeyPrefix());
-
-        return $this;
+        return RedisCache::delete($this->cacheKeyPrefix());
     }
 
     /**
