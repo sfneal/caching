@@ -42,7 +42,6 @@ before_script:
 
 script:
     - composer test
-    - bash scripts/boot.sh ${COMPOSER_FLAGS}
 
 after_script:
     - composer upload-coverage
