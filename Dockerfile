@@ -1,5 +1,5 @@
 # Base PHP image tags & Laravel .env file
-ARG php_composer_tag=8.0-v1
+ARG php_composer_tag=8.1-v1
 
 # Build temp image to install composer dependencies
 FROM stephenneal/php-composer:${php_composer_tag} AS composer

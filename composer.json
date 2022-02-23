@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
+        "php": "^7.1|^8.0",
         "sfneal/redis-helpers": "^1.4|^2.0"
     },
     "require-dev": {
@@ -39,10 +39,20 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-composer": "composer test",
-        "test-both": "composer test && composer docker-test",
-        "test-all": "composer update-test && composer docker-test",
+        "test-both": [
+            "composer test",
+            "composer docker-test"
+        ],
+        "test-all": [
+            "composer update-test",
+            "composer docker-test-all"
+        ],
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
         "docker-test": "bash scripts/boot.sh",
+        "docker-test-all": [
+            "bash scripts/boot-all.sh",
+            "composer docker-down"
+        ],
         "docker-test-lowest": "bash scripts/boot.sh --prefer-lowest",
         "docker-down": "bash scripts/down.sh",
         "upload-coverage": "php vendor/bin/ocular code-coverage:upload --format=php-clover phpunit.xml.dist",
