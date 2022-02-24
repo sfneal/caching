@@ -91,3 +91,7 @@ All notable changes to `caching` will be documented in this file
 
 ## 2.1.2 - 2021-09-03
 - add deleting of full cache key using `Cache` facade in `Cacheable::invalidateCache()`
+
+
+## 2.1.3 - 2021-02-23
+- add testing of php 8.1
