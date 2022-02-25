@@ -56,7 +56,13 @@
         "docker-test-lowest": "bash scripts/boot.sh --prefer-lowest",
         "docker-down": "bash scripts/down.sh",
         "upload-coverage": "php vendor/bin/ocular code-coverage:upload --format=php-clover phpunit.xml.dist",
-        "update-test": "composer --prefer-stable update && composer test && composer update --prefer-lowest && composer test && composer update"
+        "update-test": [
+            "composer --prefer-stable update",
+            "composer test",
+            "composer update --prefer-lowest",
+            "composer test",
+            "composer update"
+        ]
     },
     "config": {
         "sort-packages": true
