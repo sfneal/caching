@@ -95,3 +95,7 @@ All notable changes to `caching` will be documented in this file
 
 ## 2.1.3 - 2021-02-23
 - add testing of php 8.1
+
+ 
+## 3.0.0 - 2021-02-23
+- cut support for php 7.1
