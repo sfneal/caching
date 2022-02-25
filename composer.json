@@ -16,13 +16,13 @@
         }
     ],
     "require": {
-        "php": "^7.1|^8.0",
+        "php": "^7.2|^8.0",
         "sfneal/redis-helpers": "^1.4|^2.0"
     },
     "require-dev": {
         "josiasmontag/laravel-redis-mock": ">=1.2.6",
         "orchestra/testbench": ">=3.8.0",
-        "phpunit/phpunit": ">=6.5.14",
+        "phpunit/phpunit": "^7.5",
         "scrutinizer/ocular": "^1.8",
         "sfneal/currency": "^2.0"
     },
