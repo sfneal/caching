@@ -99,3 +99,4 @@ All notable changes to `caching` will be documented in this file
  
 ## 3.0.0 - 2021-02-23
 - cut support for php 7.2 & below
+- add use of GitHub actions
