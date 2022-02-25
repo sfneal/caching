@@ -13,4 +13,3 @@ bash "$DIR"/boot.sh "$COMPOSER_FLAGS" 8.0
 bash "$DIR"/boot.sh "$COMPOSER_FLAGS" 7.4
 bash "$DIR"/boot.sh "$COMPOSER_FLAGS" 7.3
 bash "$DIR"/boot.sh "$COMPOSER_FLAGS" 7.2
-bash "$DIR"/boot.sh "$COMPOSER_FLAGS" 7.1
