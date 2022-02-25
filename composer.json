@@ -38,7 +38,6 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "test-composer": "composer test",
         "test-both": [
             "composer test",
             "composer docker-test"
@@ -48,14 +47,15 @@
             "composer docker-test-all"
         ],
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-        "docker-test": "bash scripts/boot.sh",
-        "docker-test-all": [
-            "bash scripts/boot-all.sh",
-            "composer docker-down"
-        ],
-        "docker-test-lowest": "bash scripts/boot.sh --prefer-lowest",
-        "docker-down": "bash scripts/down.sh",
         "upload-coverage": "php vendor/bin/ocular code-coverage:upload --format=php-clover phpunit.xml.dist",
+        "docker-test": "bash scripts/boot.sh",
+        "docker-test-all": "bash scripts/boot-all.sh",
+        "docker-test-lowest": "bash scripts/boot.sh --prefer-lowest",
+        "docker-test-both" : [
+            "composer docker-test",
+            "composer docker-test-lowest"
+        ],
+        "down": "bash scripts/down.sh",
         "update-test": [
             "composer --prefer-stable update",
             "composer test",
