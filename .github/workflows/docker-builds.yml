@@ -23,4 +23,4 @@ jobs:
                     coverage: none
 
             -   name: Build & Test
-                run: composer ${{ matrix.composer-test }} ${{ matrix.php }}
+                run: php --version && composer ${{ matrix.composer-test }} ${{ matrix.php }}
