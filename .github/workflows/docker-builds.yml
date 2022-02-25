@@ -1,0 +1,26 @@
+name: docker-compose-actions-workflow
+
+on: [push, pull_request]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                os: [ ubuntu-latest ]
+                php: [ 7.3, 7.4, 8.0, 8.1 ]
+                composer-test: [docker-test, docker-test-lowest]
+
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v1
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+                    coverage: none
+
+            -   name: Build & Test
+                run: composer ${{ matrix.test }} ${{ matrix.php }}
