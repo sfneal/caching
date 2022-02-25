@@ -54,7 +54,12 @@ while true; do
 done
 
 # Confirm it exited with code 0
-docker inspect -f '{{.State.ExitCode}}' caching > /dev/null 2>&1
+if [[ $(docker inspect -f '{{.State.ExitCode}}' caching) == 0 ]]; then
+    echo "Success: Tests Passed! - stephenneal/caching:${TAG}"
+else
+    echo "Error: Tests Failed! - stephenneal/caching:${TAG}"
+    exit 1
+fi
 
 # Confirm the image exists
 docker image inspect stephenneal/caching:"${TAG}" > /dev/null 2>&1
