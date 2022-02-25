@@ -42,6 +42,10 @@
             "composer test",
             "composer docker-test"
         ],
+        "test-lowest" : [
+            "composer update --prefer-lowest",
+            "composer test"
+        ],
         "test-all": [
             "composer update-test",
             "composer docker-test-all"
