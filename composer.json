@@ -16,13 +16,13 @@
         }
     ],
     "require": {
-        "php": "^7.1|^8.0",
+        "php": "^7.3|^8.0",
         "sfneal/redis-helpers": "^1.4|^2.0"
     },
     "require-dev": {
         "josiasmontag/laravel-redis-mock": ">=1.2.6",
-        "orchestra/testbench": ">=3.8.0",
-        "phpunit/phpunit": ">=6.5.14",
+        "orchestra/testbench": "^6.24|^7.0",
+        "phpunit/phpunit": "^9.3",
         "scrutinizer/ocular": "^1.8",
         "sfneal/currency": "^2.0"
     },
@@ -59,8 +59,8 @@
             "bash scripts/boot-all.sh"
         ],
         "docker-test-both" : [
-            "composer docker-test",
-            "composer docker-test-lowest"
+            "composer docker-test-lowest",
+            "composer docker-test"
         ],
         "down": "bash scripts/down.sh",
         "update-test": [

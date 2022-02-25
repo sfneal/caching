@@ -25,8 +25,6 @@ php:
     - 8.0
     - 7.4
     - 7.3
-    - 7.2
-    - 7.1
 
 before_script:
     # Increase memory limit & disable xdebug
@@ -42,7 +40,7 @@ before_script:
 
 script:
     - composer test
-    - #bash scripts/boot.sh ${COMPOSER_FLAGS}
+#    - bash scripts/boot.sh ${COMPOSER_FLAGS}
 
 after_script:
     - composer upload-coverage
