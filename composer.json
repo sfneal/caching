@@ -59,8 +59,8 @@
             "bash scripts/boot-all.sh"
         ],
         "docker-test-both" : [
-            "composer docker-test",
-            "composer docker-test-lowest"
+            "composer docker-test-lowest",
+            "composer docker-test"
         ],
         "down": "bash scripts/down.sh",
         "update-test": [
