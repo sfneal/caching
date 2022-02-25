@@ -18,9 +18,11 @@ PHP_VERSION=${PHP_VERSION:4:3}
 
 # Allow for a php-composer image tag argument
 PHP_COMPOSER_TAG=${2-$PHP_VERSION}
-if [ ${#PHP_COMPOSER_TAG} -ge 1 ]; then
+if [ ${#PHP_COMPOSER_TAG} == 1 ]; then
     PHP_COMPOSER_TAG="${PHP_COMPOSER_TAG}.0"
 fi
+
+echo "${PHP_COMPOSER_TAG}"
 
 # Create the image tag
 TAG="$PHP_COMPOSER_TAG-$BRANCH"
