@@ -19,13 +19,23 @@ PHP_VERSION=${PHP_VERSION:4:3}
 # Allow for a php-composer image tag argument
 PHP_COMPOSER_TAG=${2-$PHP_VERSION}
 
+# Create the image tag
 TAG="$PHP_COMPOSER_TAG-$BRANCH"
+
+# Add '--lowest' tag suffix when installing the lowest allowable versions
+if [ -n "$COMPOSER_FLAGS" ]; then
+    TAG="${TAG}-${COMPOSER_FLAGS:8}"
+fi
+
+# Export $TAG as a global variable, exposing to docker-compose.yml
 export TAG
 
+# Shut down running containers
 docker-compose down -v --remove-orphans
 
-echo "Building image: stephenneal/caching:${TAG}${COMPOSER_FLAGS:8}"
-docker build -t stephenneal/caching:"${TAG}${COMPOSER_FLAGS:8}" \
+# Build the image
+echo "Building image: stephenneal/caching:${TAG}"
+docker build -t stephenneal/caching:"${TAG}" \
     --build-arg php_composer_tag="${PHP_COMPOSER_TAG}" \
     --build-arg composer_flags="${COMPOSER_FLAGS}" \
      .
