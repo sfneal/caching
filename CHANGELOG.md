@@ -97,5 +97,6 @@ All notable changes to `caching` will be documented in this file
 - add testing of php 8.1
 
  
-## 3.0.0 - 2021-02-23
+## 3.0.0 - 2021-02-25
 - cut support for php 7.2 & below
+- add use of GitHub actions
