@@ -52,8 +52,12 @@
         ],
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
         "upload-coverage": "php vendor/bin/ocular code-coverage:upload --format=php-clover phpunit.xml.dist",
+        "docker-build": "bash scripts/build.sh ''",
+        "docker-build-lowest": "bash scripts/build.sh --prefer-lowest",
         "docker-test": "bash scripts/boot.sh ''",
         "docker-test-lowest": "bash scripts/boot.sh --prefer-lowest",
+        "docker-test-build": "composer docker-build",
+        "docker-test-lowest-build": "composer docker-build-lowest",
         "docker-test-all": [
             "bash scripts/boot-all.sh --prefer-lowest",
             "bash scripts/boot-all.sh"

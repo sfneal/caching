@@ -24,5 +24,8 @@ jobs:
                     php-version: ${{ matrix.php }}
                     coverage: none
 
-            -   name: Build & Test
-                run: php --version && composer ${{ matrix.composer-test }} ${{ matrix.php }}
+            -   name: Build Docker Images
+                run: composer ${{ matrix.composer-test }}-build ${{ matrix.php }}
+
+            -   name: Test Docker Images
+                run: composer ${{ matrix.composer-test }} ${{ matrix.php }}
