@@ -22,14 +22,11 @@ jobs:
             -   name: Checkout code
                 uses: actions/checkout@v1
 
-            -   name: Setup PHP
-                uses: shivammathur/setup-php@v2
-                with:
-                    php-version: ${{ matrix.php }}
-                    coverage: none
-
             -   name: Build Docker Images
                 run: composer ${{ matrix.composer-test }}-build ${{ matrix.php }}
+
+            -   name: Pull Docker Images
+                run: docker compose pull --ignore-pull-failures
 
             -   name: Test Docker Images
                 run: composer ${{ matrix.composer-test }} ${{ matrix.php }}
