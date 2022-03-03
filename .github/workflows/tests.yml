@@ -2,11 +2,7 @@ name: Test Suite
 
 on:
     push:
-        branches-ignore:
-            - 'analysis-*'
     pull_request:
-        branches-ignore:
-            - 'analysis-*'
     release:
         types: [published]
 

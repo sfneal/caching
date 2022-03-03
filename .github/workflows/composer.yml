@@ -2,11 +2,7 @@ name: Composer
 
 on:
     push:
-        branches-ignore:
-            - 'analysis-*'
     pull_request:
-        branches-ignore:
-            - 'analysis-*'
 
 jobs:
     build:
