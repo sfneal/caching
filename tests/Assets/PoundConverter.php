@@ -14,7 +14,7 @@ class PoundConverter extends Converter
     /**
      * EuroConverter constructor.
      *
-     * @param int $amount
+     * @param  int  $amount
      */
     public function __construct(int $amount)
     {
