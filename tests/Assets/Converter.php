@@ -23,8 +23,7 @@ class Converter
      *
      * @return string
      */
-    public function cacheKey(): string
-    {
+    public function cacheKey(): string {
         return 'currency-conversions';
     }
 }
