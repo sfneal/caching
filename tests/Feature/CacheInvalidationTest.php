@@ -96,7 +96,7 @@ class CacheInvalidationTest extends TestCase
     /**
      * Execute assertions to confirm the cache has been invalidated.
      *
-     * @param array $conversions
+     * @param  array  $conversions
      * @param $invalidations
      */
     public function assertCacheInvalidated(array $conversions, $invalidations): void

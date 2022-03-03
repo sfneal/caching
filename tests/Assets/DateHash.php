@@ -21,8 +21,8 @@ class DateHash
     /**
      * TodaysDateHash constructor.
      *
-     * @param string|null $datetime
-     * @param string $format
+     * @param  string|null  $datetime
+     * @param  string  $format
      */
     public function __construct(string $datetime = null, string $format = 'Y-m-d')
     {
