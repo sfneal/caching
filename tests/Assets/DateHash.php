@@ -24,7 +24,8 @@ class DateHash
      * @param  string|null  $datetime
      * @param  string  $format
      */
-    public function __construct(string $datetime = null, string $format = 'Y-m-d') {
+    public function __construct(string $datetime = null, string $format = 'Y-m-d')
+    {
         $this->format = $format;
         $this->date = date($this->format, strtotime($datetime ?? now()));
     }
