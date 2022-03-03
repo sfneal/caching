@@ -16,8 +16,7 @@ class EuroConverter extends Converter
      *
      * @param  int  $amount
      */
-    public function __construct(int $amount)
-    {
+    public function __construct(int $amount) {
         $this->amount = $amount;
     }
 

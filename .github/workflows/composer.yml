@@ -2,11 +2,7 @@ name: Composer
 
 on:
     push:
-        branches-ignore:
-            - 'analysis-**'
     pull_request:
-        branches-ignore:
-            - 'analysis-**'
 
 jobs:
     build:
@@ -24,14 +20,17 @@ jobs:
         steps:
             -   name: Checkout code
                 uses: actions/checkout@v1
+                if: startsWith(github.head_ref, 'analysis-') == false
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
+                if: startsWith(github.head_ref, 'analysis-') == false
                 with:
                     php-version: ${{ matrix.php }}
                     coverage: none
 
             -   name: Install Composer Dependencies
+                if: startsWith(github.head_ref, 'analysis-') == false
                 run: |
                     composer update --${{ matrix.dev-dependencies }} --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
