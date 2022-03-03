@@ -3,10 +3,10 @@ name: Composer
 on:
     push:
         branches-ignore:
-            - 'analysis*'
+            - 'analysis-**'
     pull_request:
         branches-ignore:
-            - 'analysis*'
+            - 'analysis-**'
 
 jobs:
     build:
