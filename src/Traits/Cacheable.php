@@ -32,7 +32,7 @@ trait Cacheable
      *  - use cacheKey() method to retrieve correct key to use for storing in cache
      *  - use base class's execute() method for retrieving query results
      *
-     * @param int|null $ttl
+     * @param  int|null  $ttl
      * @return mixed
      */
     public function fetch(int $ttl = null)
@@ -48,7 +48,7 @@ trait Cacheable
      *  - 2. initialized $this->ttl property
      *  - 3. application default cache ttl.
      *
-     * @param int|null $ttl
+     * @param  int|null  $ttl
      * @return int
      */
     private function getTTL(int $ttl = null): int
