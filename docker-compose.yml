@@ -5,7 +5,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: "stephenneal/caching:${TAG}"
+        image: "stephenneal/caching:latest"
         env_file: .env.docker
         container_name: caching
         tty: true

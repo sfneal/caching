@@ -29,7 +29,7 @@ TAG="$PHP_COMPOSER_TAG-$BRANCH"
 
 # Add '--lowest' tag suffix when installing the lowest allowable versions
 if [ -n "$COMPOSER_FLAGS" ]; then
-    TAG="${TAG}-${COMPOSER_FLAGS:8}"
+    TAG="latest-${COMPOSER_FLAGS:8}"
 fi
 
 # Export $TAG as a global variable, exposing to docker-compose.yml
@@ -39,13 +39,13 @@ export TAG
 docker-compose down -v --remove-orphans
 
 # Build the image
-echo "Building image: stephenneal/caching:${TAG}"
-docker build -t stephenneal/caching:"${TAG}" \
+echo "Building image: stephenneal/caching:latest"
+docker build -t stephenneal/caching:"latest" \
     --build-arg php_composer_tag="${PHP_COMPOSER_TAG}" \
     --build-arg composer_flags="${COMPOSER_FLAGS}" \
      .
 
-docker-compose up -d
+docker-compose up -d --no-build
 
 docker logs -f caching
 
@@ -60,11 +60,11 @@ done
 
 # Confirm it exited with code 0
 if [[ $(docker inspect -f '{{.State.ExitCode}}' caching) == 0 ]]; then
-    echo "Success: Tests Passed! - stephenneal/caching:${TAG}"
+    echo "Success: Tests Passed! - stephenneal/caching:latest"
 else
-    echo "Error: Tests Failed! - stephenneal/caching:${TAG}"
+    echo "Error: Tests Failed! - stephenneal/caching:latest"
     exit 1
 fi
 
 # Confirm the image exists
-docker image inspect stephenneal/caching:"${TAG}" > /dev/null 2>&1
+docker image inspect stephenneal/caching:"latest" > /dev/null 2>&1
