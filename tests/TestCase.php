@@ -69,7 +69,7 @@ class TestCase extends OrchestraTestCase
      *
      * @return array[]
      */
-    public function cacheablesProvider(): array
+    public static function cacheablesProvider(): array
     {
         return [
             [new DateHash(now()->subDay(), 'Y-m-d')],
