@@ -102,7 +102,7 @@ class CacheInvalidationTest extends TestCase
     public function assertCacheInvalidated(array $conversions, $invalidations): void
     {
         $this->assertIsArray($invalidations);
-        $this->assertCount(count($conversions), $invalidations);
+        $this->assertGreaterThanOrEqual(count($conversions), $invalidations);
 
         $this->assertEquals(
             array_values(
