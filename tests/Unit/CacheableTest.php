@@ -9,9 +9,10 @@ class CacheableTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider cacheablesProvider
      *
-     * @param $cacheable
+     * @param  $cacheable
      */
     public function cache_key_is_correct($cacheable)
     {
@@ -21,9 +22,10 @@ class CacheableTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider cacheablesProvider
      *
-     * @param $cacheable
+     * @param  $cacheable
      */
     public function values_can_be_cached($cacheable)
     {
@@ -35,9 +37,10 @@ class CacheableTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider cacheablesProvider
      *
-     * @param $cacheable
+     * @param  $cacheable
      */
     public function values_can_be_retrieved_without_caching($cacheable)
     {
@@ -49,9 +52,10 @@ class CacheableTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider cacheablesProvider
      *
-     * @param $cacheable
+     * @param  $cacheable
      */
     public function cache_can_be_invalidated($cacheable)
     {
