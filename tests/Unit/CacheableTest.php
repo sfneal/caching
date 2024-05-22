@@ -27,7 +27,6 @@ class CacheableTest extends TestCase
         $num = rand(0, 1000);
         $cacheable = new AutoKeyPoundConverter($num);
 
-
         $this->assertNotNull($cacheable->cacheKey());
         $this->assertIsString($cacheable->cacheKey());
         $this->assertStringContainsString(
@@ -35,7 +34,7 @@ class CacheableTest extends TestCase
             $cacheable->cacheKey()
         );
         $this->assertEquals(
-            'auto_sfneal-caching-tests-assets-autokeypoundconverter:' . $num,
+            'auto_sfneal-caching-tests-assets-autokeypoundconverter:'.$num,
             $cacheable->cacheKey()
         );
     }
