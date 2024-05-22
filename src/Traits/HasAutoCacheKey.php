@@ -15,15 +15,16 @@ trait HasAutoCacheKey
     {
         $reflection = (new \ReflectionClass($this));
 
-        $key  = 'auto_' . strtolower(str_replace('\\', '-', $reflection->getName()));
+        $key = 'auto_'.strtolower(str_replace('\\', '-', $reflection->getName()));
 
         if (count($reflection->getProperties())) {
             foreach ($reflection->getProperties() as $property) {
                 if ($property->getName() != 'ttl') {
-                    $key .= ':' . $this->{$property->getName()};
+                    $key .= ':'.$this->{$property->getName()};
                 }
             }
         }
+
         return $key;
     }
 }
