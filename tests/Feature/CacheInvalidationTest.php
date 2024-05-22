@@ -19,7 +19,10 @@ class CacheInvalidationTest extends TestCase
             new EuroConverter(rand(0, 1000)),
         ];
 
+        $conversions[0]->invalidateCache();
+
         foreach ($conversions as $conversion) {
+            $this->assertFalse($conversion->isCached());
             $conversion->fetch();
             $this->assertTrue($conversion->isCached());
         }
@@ -38,7 +41,10 @@ class CacheInvalidationTest extends TestCase
             new PoundConverter(rand(0, 1000)),
         ];
 
+        $conversions[0]->invalidateCache();
+
         foreach ($conversions as $conversion) {
+            $this->assertFalse($conversion->isCached());
             $conversion->fetch();
             $this->assertTrue($conversion->isCached());
         }
@@ -57,7 +63,10 @@ class CacheInvalidationTest extends TestCase
             new DollarConverter(rand(0, 1000)),
         ];
 
+        $conversions[0]->invalidateCache();
+
         foreach ($conversions as $conversion) {
+            $this->assertFalse($conversion->isCached());
             $conversion->fetch();
             $this->assertTrue($conversion->isCached());
         }
@@ -83,6 +92,7 @@ class CacheInvalidationTest extends TestCase
         ];
 
         foreach ($conversions as $conversion) {
+            $this->assertFalse($conversion->isCached());
             $conversion->fetch();
             $this->assertTrue($conversion->isCached());
         }

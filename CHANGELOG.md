@@ -106,3 +106,7 @@ All notable changes to `caching` will be documented in this file
 - cut support for PHP 7
 - add support for PHP 8
 - cleanup dependency constraints
+
+
+## 4.1.0 - 2024-05-22
+- add `HasAutoCacheKey` trait for auto generating a cache key (removes the need to define a `cacheKey()` method)

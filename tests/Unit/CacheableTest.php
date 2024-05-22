@@ -3,6 +3,7 @@
 namespace Sfneal\Caching\Tests\Unit;
 
 use Illuminate\Support\Facades\Cache;
+use Sfneal\Caching\Tests\Assets\AutoKeyPoundConverter;
 use Sfneal\Caching\Tests\TestCase;
 
 class CacheableTest extends TestCase
@@ -18,6 +19,24 @@ class CacheableTest extends TestCase
     {
         $this->assertNotNull($cacheable->cacheKey());
         $this->assertIsString($cacheable->cacheKey());
+    }
+
+    /** @test */
+    public function cache_key_is_correct_auto_generate()
+    {
+        $num = rand(0, 1000);
+        $cacheable = new AutoKeyPoundConverter($num);
+
+        $this->assertNotNull($cacheable->cacheKey());
+        $this->assertIsString($cacheable->cacheKey());
+        $this->assertStringContainsString(
+            'auto_sfneal-caching-tests-assets-autokeypoundconverter',
+            $cacheable->cacheKey()
+        );
+        $this->assertEquals(
+            'auto_sfneal-caching-tests-assets-autokeypoundconverter:'.$num,
+            $cacheable->cacheKey()
+        );
     }
 
     /**

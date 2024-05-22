@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Illuminate\Support\Facades\Cache;
 use Lunaweb\RedisMock\Providers\RedisMockServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use Sfneal\Caching\Tests\Assets\AutoKeyPoundConverter;
 use Sfneal\Caching\Tests\Assets\DateHash;
 use Sfneal\Caching\Tests\Assets\DollarConverter;
 use Sfneal\Caching\Tests\Assets\EuroConverter;
@@ -72,24 +73,25 @@ class TestCase extends OrchestraTestCase
     public static function cacheablesProvider(): array
     {
         return [
-            [new DateHash(now()->subDay(), 'Y-m-d')],
-            [new DateHash(now()->subDay(), 'm/d/Y')],
-            [new DateHash(now()->subDay(), 'm/d/y')],
-            [new DateHash(now(), 'Y-m-d')],
-            [new DateHash(now(), 'm/d/Y')],
-            [new DateHash(now(), 'm/d/y')],
-            [new DateHash(now()->addDay(), 'Y-m-d')],
-            [new DateHash(now()->addDay(), 'm/d/Y')],
-            [new DateHash(now()->addDay(), 'm/d/y')],
-            [new EuroConverter(rand(0, 1000))],
-            [new EuroConverter(rand(0, 1000))],
-            [new EuroConverter(rand(0, 1000))],
-            [new PoundConverter(rand(0, 1000))],
-            [new PoundConverter(rand(0, 1000))],
-            [new PoundConverter(rand(0, 1000))],
-            [new DollarConverter(rand(0, 1000))],
-            [new DollarConverter(rand(0, 1000))],
-            [new DollarConverter(rand(0, 1000))],
+            'DateHash_1' => [new DateHash(now()->subDay(), 'Y-m-d')],
+            'DateHash_2' => [new DateHash(now()->subDay(), 'm/d/Y')],
+            'DateHash_3' => [new DateHash(now()->subDay(), 'm/d/y')],
+            'DateHash_4' => [new DateHash(now(), 'Y-m-d')],
+            'DateHash_5' => [new DateHash(now(), 'm/d/Y')],
+            'DateHash_6' => [new DateHash(now(), 'm/d/y')],
+            'DateHash_7' => [new DateHash(now()->addDay(), 'Y-m-d')],
+            'DateHash_8' => [new DateHash(now()->addDay(), 'm/d/Y')],
+            'DateHash_9' => [new DateHash(now()->addDay(), 'm/d/y')],
+            'EuroConverter_1' => [new EuroConverter(rand(0, 1000))],
+            'EuroConverter_2' => [new EuroConverter(rand(0, 1000))],
+            'EuroConverter_3' => [new EuroConverter(rand(0, 1000))],
+            'PoundConverter_1' => [new PoundConverter(rand(0, 1000))],
+            'PoundConverter_2' => [new PoundConverter(rand(0, 1000))],
+            'PoundConverter_3' => [new PoundConverter(rand(0, 1000))],
+            'DollarConverter_1' => [new DollarConverter(rand(0, 1000))],
+            'DollarConverter_2' => [new DollarConverter(rand(0, 1000))],
+            'DollarConverter_3' => [new DollarConverter(rand(0, 1000))],
+            'AutoKeyPoundConverter' => [new AutoKeyPoundConverter(rand(0, 1000))],
         ];
     }
 }
