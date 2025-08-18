@@ -35,7 +35,7 @@ trait Cacheable
      * @param  int|null  $ttl
      * @return mixed
      */
-    public function fetch(int $ttl = null)
+    public function fetch(?int $ttl = null)
     {
         return Cache::remember($this->cacheKey(), $this->getTTL($ttl), function () {
             return $this->execute();
@@ -51,7 +51,7 @@ trait Cacheable
      * @param  int|null  $ttl
      * @return int
      */
-    private function getTTL(int $ttl = null): int
+    private function getTTL(?int $ttl = null): int
     {
         return intval($ttl ?? $this->ttl ?? config('redis-helpers.ttl'));
     }
